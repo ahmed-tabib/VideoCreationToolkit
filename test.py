@@ -3,19 +3,17 @@ import ffmpeg
 
 output_params = {
     "y": None,
-    "shortest": None,
     "c:v": "hevc_nvenc",
-    "c:a": "copy",
     "pix_fmt": "yuv420p",
 }
 
-audio = ffmpeg.input('D:\dev\QuizVideoGen\media\\timer.mp3')
-video = vctk.gen_bg_spliced_video(input_file_dir='D:\\dev\\QuizVideoGen\\media\\bg', video_len=54.2, segment_len=3.0)
+image = ffmpeg.input('C:\\Users\\ahmed\\Desktop\\methodology-diagram.png')
+video = ffmpeg.input('test.mp4')
 
-print(ffmpeg.output(audio, video, 'test.mp4', **output_params).compile())
+overlayed = vctk.add_image(image, video, start=1.0, end=5.0, width=680, height=680, x='min((W-w)/2,-w+(t-1)*1500)')
 
 ( 
-    ffmpeg
-    .output(audio, video, 'test.mp4', **output_params)
+    overlayed
+    .output('test2.mp4', **output_params)
     .run()
 )
