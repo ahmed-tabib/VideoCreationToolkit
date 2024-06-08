@@ -30,7 +30,7 @@ def get_random_segment(input_file: str, segment_len: float):
 
     return (
         video
-        .trim(start_point, end_point)
+        .trim(start=start_point, end=end_point)
         .setpts('PTS-STARTPTS')
     )
 
@@ -41,12 +41,12 @@ def get_random_segment(input_file: str, segment_len: float):
 # the output. the start and endpoints are random. The final video will be an amalgamation of random clips cut together.
 # Width and height determine the dimensions of the final video, all videos will be scaled to this.
 #
-def gen_bg_spliced_video(input_file_list: None | list,
-                         input_file_dir: None | str,
-                         video_len: float,
-                         segment_len: float,
-                         width: None | int,
-                         height: None | int):
+def gen_bg_spliced_video(input_file_list: None | list = None,
+                         input_file_dir: None | str = None,
+                         video_len: float = 10.0,
+                         segment_len: float = 5.0,
+                         width: None | int = None,
+                         height: None | int = None):
     
     if input_file_list == None:
         if input_file_dir == None:
@@ -54,7 +54,7 @@ def gen_bg_spliced_video(input_file_list: None | list,
         input_file_list = [os.path.join(input_file_dir, file) for file in os.listdir(input_file_dir)]
     
     # determine the length and number of segments to use
-    segment_lengths = [segment_len] * (video_len // segment_len)
+    segment_lengths = [segment_len] * int(video_len // segment_len)
     if (video_len // segment_len) < (video_len / segment_len):
         segment_lengths.append(video_len % segment_len)
 
