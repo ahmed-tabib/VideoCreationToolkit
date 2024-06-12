@@ -1,0 +1,8 @@
+setup.py
+src/vctk/__init__.py
+src/vctk/vctk.py
+src/vctk.egg-info/PKG-INFO
+src/vctk.egg-info/SOURCES.txt
+src/vctk.egg-info/dependency_links.txt
+src/vctk.egg-info/requires.txt
+src/vctk.egg-info/top_level.txt

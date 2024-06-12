@@ -10,6 +10,7 @@ output_params = {
 image = ffmpeg.input('C:\\Users\\ahmed\\Desktop\\methodology-diagram.png')
 video = ffmpeg.input('test.mp4')
 
+#overlayed = vctk.add_image(image, video, start=1.0, end=5.0, width=680, height=680, x='min((W-w)/2,-w+(t-1)*1500)')
 overlayed = vctk.add_image(image, video, start=1.0, end=5.0, width=680, height=680, x='min((W-w)/2,-w+(t-1)*1500)')
 
 ( 
